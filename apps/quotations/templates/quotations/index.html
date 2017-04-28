@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Website to add and share quotations"/>
+    <title>Quotes</title>
+    {% load staticfiles%}
+    <link rel="stylesheet" type="text/css" href="{% static 'quotations/css/styles.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans" rel="stylesheet">
+  </head>
+  <body >
+    <div class="container">
+      <h1 class="title">Quotations</h1>
+      <p class="description">Your site to create and share your quotes with friends</p>
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+          <li>{{message}}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      <form action="register" method="post">
+          {% csrf_token %}
+          <h2>Please register:</h2>
+          <p>First Name:</p> <input type="text" name="first_name">
+          <p>Last Name:</p> <input type="text" name="last_name">
+          <p>E-mail address:</p> <input type="text" name="email">
+          <p>Password:</p> <input type="password" name="password">
+          <p>Confirm Password:</p> <input type="password" name="confirm">
+          <button type="submit">Register</button>
+      </form>
+      <form action="login" method="post">
+          {% csrf_token %}
+          <h2>Login:</h2>
+          <p>E-mail address:</p> <input type="text" name="email">
+          <p>Password:</p> <input type="password" name="password">
+          <button type="submit">Login</button>
+      </form>
+    </div>
+  </body>
+</html>

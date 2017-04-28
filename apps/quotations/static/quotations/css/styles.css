@@ -1,0 +1,104 @@
+
+
+.container
+{
+	width: 970px;
+	height: auto;
+	border: 0px;
+	box-shadow: 5px 5px 5px black;
+	padding: 50px;
+	padding-top: 30px;
+	font-family: 'Indie Flower', cursive;
+	background-image: url("/static/quotations/img/pen_and_paper.jpg") ;
+	background-size: cover;
+}
+
+.title
+{
+	color: red;
+	margin-bottom: 0px;
+	font-size: 40px;
+}
+.description
+{
+	margin-top: 0px;
+}
+.title, .description
+{
+
+	text-align: center;
+}
+
+.container form
+{
+	display: block;
+}
+
+form input
+{
+	border: 1px solid black;
+}
+
+form button
+{
+	display: block;
+	margin-top: 10px;
+	background-color: white;
+	border-radius: 1px;
+	box-shadow: 1px 1px 2px black;
+	margin-left: 60px;
+	width: 60px;
+}
+
+table
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+
+}
+
+.quote, .favorite, .quoteAdd
+{
+	width: 300px;
+	height: 300px;
+	margin-bottom: 50px;
+	overflow: scroll;
+
+}
+
+.quote, .favorite
+{
+	border: 0px;
+	box-shadow: 5px 5px 5px black;
+}
+
+.quote1
+{
+	width: auto;
+	height: auto;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px black;
+	margin: 10px 10px 10px 10px;
+	padding: 5px;
+}
+
+.inner_quote p , form{
+	display: inline-block;
+}
+.inner_quote button{
+	background-color: white;
+	color: black;
+	box-shadow: 1px 1px 2px black;
+	width: 100px;
+	height: 20px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+
+}
+.red
+{
+	color: red
+}
+
+

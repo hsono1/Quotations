@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Content Page"/>
+  <title>Content Page</title>
+  {% load staticfiles%}
+  <link rel="stylesheet" type="text/css" href="{% static 'quotations/css/styles.css'%}">
+</head>
+<body>
+  <div class='container'>
+    <form action="logout" method="post">
+      {% csrf_token %}
+      <button type="submit">Logout</button>
+    </form>
+
+      <h1>Welcome, {{user.first_name}}</h1>
+
+    <h3>Quotable Quotes</h3>
+    <div class="quote">
+        {% for i in quotes%}
+          <div class="quote1">
+            {{i.author}}: {{i.message}}
+            <div class="inner_quote">
+            <p>Posted by <a href="users/{{i.creator.id}}">{{i.creator.first_name}}</a>
+            <form action="favorite" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="message_obj" value={{i.id}}>
+              <input type="hidden" name="user" value="{{user.id}}">
+              <button type="submit">Add to my List</button>
+            </form>
+            </div>
+          </div>
+        {% endfor%}
+    </div>
+
+    <fieldset class="favorite">
+      <legend>Your Favorites</legend>
+      {% for i in favorites %}
+          {{i.author}}
+          <div class="quote1">
+            {{i.author}}: {{i.message}}
+            <div class="inner_quote">
+            <p>Posted by <a href="users/{{i.favorites.id}}">{{i.favorites.first_name}}</a>
+            <form action="removeFav" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="message_obj" value={{i.id}}>
+              <input type="hidden" name="user" value="{{user.id}}">
+              <button type="submit">Remove</button>
+            </form>
+            </div>
+          </div>
+      {% endfor %}
+
+    </fieldset>
+
+    <h3>Contribute with a quote</h3>
+    <div class="quoteAdd">
+      <form action="addQuote" method="POST">
+        {% csrf_token %}
+        <p>Quoted By:</p><input type="text" name="author">
+        <p>Message:</p><input type="text" name="message">
+        <input type="hidden" name="creator" value="{{user.id}}">
+        <button type="submit">Submit</button>
+
+      </form>
+
+
+    </div>
+
+
+
+  </div>
+</body>
+</html>
